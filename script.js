@@ -1,3 +1,6 @@
+let computerSelection = getComputerChoice();
+let playerSelection = prompt('Rock, paper, or scissors?', 'Rock');
+
 function getComputerChoice() {
     let choice = (Math.random() * 3);
     if (choice >= 0 && choice < 1) {
@@ -11,10 +14,12 @@ function getComputerChoice() {
     }
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = getComputerChoice();
+function randomizeChoice() {
+    computerSelection = getComputerChoice();
+}
 
 function playRound(playerSelection, computerSelection) {
+    randomizeChoice();
     computerSelection = computerSelection.toLowerCase();
     playerSelection = playerSelection.toLowerCase();
 
@@ -47,8 +52,14 @@ function playGame() {
         computerScore += 1;
     }
 
-    computerSelection = getComputerChoice();
-    playerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+
+    if (playRound(playerSelection, computerSelection) == "You win!") {
+        playerScore += 1;
+    }
+    else if (playRound(playerSelection, computerSelection)== "You lose!") {
+        computerScore += 1;
+    }
 
     playRound(playerSelection, computerSelection);
 
@@ -59,9 +70,6 @@ function playGame() {
         computerScore += 1;
     }
 
-    computerSelection = getComputerChoice();
-    playerSelection = getComputerChoice();
-
     playRound(playerSelection, computerSelection);
 
     if (playRound(playerSelection, computerSelection) == "You win!") {
@@ -71,9 +79,6 @@ function playGame() {
         computerScore += 1;
     }
 
-    computerSelection = getComputerChoice();
-    playerSelection = getComputerChoice();
-
     playRound(playerSelection, computerSelection);
 
     if (playRound(playerSelection, computerSelection) == "You win!") {
@@ -82,21 +87,6 @@ function playGame() {
     else if (playRound(playerSelection, computerSelection)== "You lose!") {
         computerScore += 1;
     }
-
-    computerSelection = getComputerChoice();
-    playerSelection = getComputerChoice();
-
-    playRound(playerSelection, computerSelection);
-
-    if (playRound(playerSelection, computerSelection) == "You win!") {
-        playerScore += 1;
-    }
-    else if (playRound(playerSelection, computerSelection)== "You lose!") {
-        computerScore += 1;
-    }
-
-    computerSelection = getComputerChoice();
-    playerSelection = getComputerChoice();
 
     if (playerScore > computerScore) {
         return "You win! Score: " + playerScore + " to " + computerScore;
