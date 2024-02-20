@@ -32,3 +32,81 @@ function playRound(playerSelection, computerSelection) {
         return "It's a tie!";
     }
 }
+
+
+function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    playRound(playerSelection, computerSelection);
+
+    if (playRound(playerSelection, computerSelection) == "You win!") {
+        playerScore += 1;
+    }
+    else if (playRound(playerSelection, computerSelection)== "You lose!") {
+        computerScore += 1;
+    }
+
+    computerSelection = getComputerChoice();
+    playerSelection = getComputerChoice();
+
+    playRound(playerSelection, computerSelection);
+
+    if (playRound(playerSelection, computerSelection) == "You win!") {
+        playerScore += 1;
+    }
+    else if (playRound(playerSelection, computerSelection)== "You lose!") {
+        computerScore += 1;
+    }
+
+    computerSelection = getComputerChoice();
+    playerSelection = getComputerChoice();
+
+    playRound(playerSelection, computerSelection);
+
+    if (playRound(playerSelection, computerSelection) == "You win!") {
+        playerScore += 1;
+    }
+    else if (playRound(playerSelection, computerSelection)== "You lose!") {
+        computerScore += 1;
+    }
+
+    computerSelection = getComputerChoice();
+    playerSelection = getComputerChoice();
+
+    playRound(playerSelection, computerSelection);
+
+    if (playRound(playerSelection, computerSelection) == "You win!") {
+        playerScore += 1;
+    }
+    else if (playRound(playerSelection, computerSelection)== "You lose!") {
+        computerScore += 1;
+    }
+
+    computerSelection = getComputerChoice();
+    playerSelection = getComputerChoice();
+
+    playRound(playerSelection, computerSelection);
+
+    if (playRound(playerSelection, computerSelection) == "You win!") {
+        playerScore += 1;
+    }
+    else if (playRound(playerSelection, computerSelection)== "You lose!") {
+        computerScore += 1;
+    }
+
+    computerSelection = getComputerChoice();
+    playerSelection = getComputerChoice();
+
+    if (playerScore > computerScore) {
+        return "You win! Score: " + playerScore + " to " + computerScore;
+    }
+
+    else if (computerScore > playerScore) {
+        return "You lose! Score: " + playerScore + " to " + computerScore;
+    }
+
+    else {
+        return "You tied! Score: " + playerScore + " to " + computerScore;
+    }
+}
