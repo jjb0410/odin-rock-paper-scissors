@@ -1,14 +1,25 @@
 //ui functionality starts here
+let computerSelection = getComputerChoice(); //initialize choice for computer 
+let playerSelection; //= prompt('Rock, paper, or scissors?', 'Rock'); // take player choice
+
 let rockBtn = document.querySelector(".rock");
 let paperBtn = document.querySelector(".paper");
 let scissorsBtn = document.querySelector(".scissors");
 
-
+rockBtn.addEventListener("click", function() {
+    playerSelection="rock";
+    playRound(playerSelection, computerSelection);}
+    );
+paperBtn.addEventListener("click", function() {
+    playerSelection="paper";
+    playRound(playerSelection, computerSelection);}
+    );
+scissorsBtn.addEventListener("click", function() {
+    playerSelection="scissors";
+    playRound(playerSelection, computerSelection);}
+    );
 
 //game logic starts here
-let computerSelection = getComputerChoice(); //initialize choice for computer 
-let playerSelection = prompt('Rock, paper, or scissors?', 'Rock'); // take player choice
-
 function getComputerChoice() {
     let choice = (Math.random() * 3); //computer choice is 1/3 chance of rock paper or scissors
     if (choice >= 0 && choice < 1) {
