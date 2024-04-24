@@ -1,3 +1,11 @@
+//ui functionality starts here
+let rockBtn = document.querySelector(".rock");
+let paperBtn = document.querySelector(".paper");
+let scissorsBtn = document.querySelector(".scissors");
+
+
+
+//game logic starts here
 let computerSelection = getComputerChoice(); //initialize choice for computer 
 let playerSelection = prompt('Rock, paper, or scissors?', 'Rock'); // take player choice
 
