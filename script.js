@@ -5,17 +5,18 @@ let playerSelection; //= prompt('Rock, paper, or scissors?', 'Rock'); // take pl
 let rockBtn = document.querySelector(".rock");
 let paperBtn = document.querySelector(".paper");
 let scissorsBtn = document.querySelector(".scissors");
+let resultsDiv = document.querySelector(".results");
 
 rockBtn.addEventListener("click", function() {
-    playerSelection="rock";
+    playerSelection="Rock";
     playRound(playerSelection, computerSelection);}
     );
 paperBtn.addEventListener("click", function() {
-    playerSelection="paper";
+    playerSelection="Paper";
     playRound(playerSelection, computerSelection);}
     );
 scissorsBtn.addEventListener("click", function() {
-    playerSelection="scissors";
+    playerSelection="Scissors";
     playRound(playerSelection, computerSelection);}
     );
 
@@ -46,17 +47,23 @@ function playRound(playerSelection, computerSelection) {
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
     (playerSelection == 'paper' && computerSelection == 'rock') ||
     (playerSelection == 'scissors' && computerSelection == 'paper')) {
-            return "You win!";
+        let resultsPara = document.createElement("p");
+        resultsPara.textContent = "You win!";
+        resultsDiv.appendChild(resultsPara);
         }
     //check for losing choices
     else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
     (playerSelection == 'paper' && computerSelection == 'scissors') ||
     (playerSelection == 'scissors' && computerSelection == 'rock')) {
-        return "You lose!";
+        let resultsPara = document.createElement("p");
+        resultsPara.textContent = "You lose!";
+        resultsDiv.appendChild(resultsPara);
     }
     //remaining choices should be a tie
     else {
-        return "It's a tie!";
+        let resultsPara = document.createElement("p");
+        resultsPara.textContent = "It's a tie!";
+        resultsDiv.appendChild(resultsPara);
     }
 }
 
