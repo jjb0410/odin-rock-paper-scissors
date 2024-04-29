@@ -9,15 +9,15 @@ let resultsDiv = document.querySelector(".results");
 
 rockBtn.addEventListener("click", function() {
     playerSelection="Rock";
-    playRound(playerSelection, computerSelection);}
+    playGame();}
     );
 paperBtn.addEventListener("click", function() {
     playerSelection="Paper";
-    playRound(playerSelection, computerSelection);}
+    playGame();}
     );
 scissorsBtn.addEventListener("click", function() {
     playerSelection="Scissors";
-    playRound(playerSelection, computerSelection);}
+    playGame();}
     );
 
 //game logic starts here
@@ -47,23 +47,17 @@ function playRound(playerSelection, computerSelection) {
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
     (playerSelection == 'paper' && computerSelection == 'rock') ||
     (playerSelection == 'scissors' && computerSelection == 'paper')) {
-        let resultsPara = document.createElement("p");
-        resultsPara.textContent = "You win!";
-        resultsDiv.appendChild(resultsPara);
+        return "You win!";
         }
     //check for losing choices
     else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
     (playerSelection == 'paper' && computerSelection == 'scissors') ||
     (playerSelection == 'scissors' && computerSelection == 'rock')) {
-        let resultsPara = document.createElement("p");
-        resultsPara.textContent = "You lose!";
-        resultsDiv.appendChild(resultsPara);
+        return "You lose!";
     }
     //remaining choices should be a tie
     else {
-        let resultsPara = document.createElement("p");
-        resultsPara.textContent = "It's a tie!";
-        resultsDiv.appendChild(resultsPara);
+        return "It's a tie!";
     }
 }
 
@@ -72,52 +66,28 @@ function playGame() {
     let playerScore = 0; //initialize scores at 0
     let computerScore = 0;
     
-    //i don't know loops yet but i already feel bad copy and pasting this 5 times
-    playRound(playerSelection, computerSelection);
-
-    // if player wins add 1 to score
-    if (playRound(playerSelection, computerSelection) == "You win!") {
-        playerScore += 1;
-    }
-    // if computer wins add 1 to score
-    else if (playRound(playerSelection, computerSelection)== "You lose!") {
-        computerScore += 1;
-    }
-
-    playRound(playerSelection, computerSelection);
-
-    if (playRound(playerSelection, computerSelection) == "You win!") {
-        playerScore += 1;
-    }
-    else if (playRound(playerSelection, computerSelection)== "You lose!") {
-        computerScore += 1;
-    }
-
-    playRound(playerSelection, computerSelection);
-
-    if (playRound(playerSelection, computerSelection) == "You win!") {
-        playerScore += 1;
-    }
-    else if (playRound(playerSelection, computerSelection)== "You lose!") {
-        computerScore += 1;
-    }
-
-    playRound(playerSelection, computerSelection);
-
-    if (playRound(playerSelection, computerSelection) == "You win!") {
-        playerScore += 1;
-    }
-    else if (playRound(playerSelection, computerSelection)== "You lose!") {
-        computerScore += 1;
-    }
-
-    playRound(playerSelection, computerSelection);
-
-    if (playRound(playerSelection, computerSelection) == "You win!") {
-        playerScore += 1;
-    }
-    else if (playRound(playerSelection, computerSelection)== "You lose!") {
-        computerScore += 1;
+    for (let i=0; i<5; i++) {
+        //playRound(playerSelection, computerSelection);
+        // if player wins add 1 to score and print result in results div
+        if (playRound(playerSelection, computerSelection) == "You win!") {
+            playerScore += 1;
+            let resultsPara = document.createElement("p");
+            resultsPara.textContent = "You win!";
+            resultsDiv.appendChild(resultsPara);
+        }
+        // if computer wins add 1 to score and print result in results div
+        else if (playRound(playerSelection, computerSelection) == "You lose!") {
+            computerScore += 1;
+            let resultsPara = document.createElement("p");
+            resultsPara.textContent = "You lose!";
+            resultsDiv.appendChild(resultsPara);
+        }
+        //if tie print in results div
+        else {
+            let resultsPara = document.createElement("p");
+            resultsPara.textContent = "It's a tie!";
+            resultsDiv.appendChild(resultsPara);
+        }
     }
 
     //check if player score is higher than computer score, if so, declare player winner
