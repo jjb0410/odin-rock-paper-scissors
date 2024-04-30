@@ -5,6 +5,7 @@ let playerSelection; //= prompt('Rock, paper, or scissors?', 'Rock'); // take pl
 let rockBtn = document.querySelector(".rock");
 let paperBtn = document.querySelector(".paper");
 let scissorsBtn = document.querySelector(".scissors");
+let clearBtn = document.querySelector(".clear");
 let resultsDiv = document.querySelector(".results");
 
 rockBtn.addEventListener("click", function() {
@@ -19,6 +20,12 @@ scissorsBtn.addEventListener("click", function() {
     playerSelection="Scissors";
     playGame();}
     );
+
+clearBtn.addEventListener("click", function() {
+    while (resultsDiv.firstChild = true) {
+        resultsDiv.removeChild(resultsDiv.firstChild);
+    }
+})
 
 //game logic starts here
 function getComputerChoice() {
