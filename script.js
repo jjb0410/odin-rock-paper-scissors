@@ -47,13 +47,13 @@ function playRound(playerSelection, computerSelection) {
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
     (playerSelection == 'paper' && computerSelection == 'rock') ||
     (playerSelection == 'scissors' && computerSelection == 'paper')) {
-        return "You win!";
+        return "Player wins!";
         }
     //check for losing choices
     else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
     (playerSelection == 'paper' && computerSelection == 'scissors') ||
     (playerSelection == 'scissors' && computerSelection == 'rock')) {
-        return "You lose!";
+        return "Player wins!";
     }
     //remaining choices should be a tie
     else {
@@ -72,14 +72,14 @@ function playGame() {
         if (playRound(playerSelection, computerSelection) == "You win!") {
             playerScore += 1;
             let resultsPara = document.createElement("p");
-            resultsPara.textContent = "You win!";
+            resultsPara.textContent = "Player wins!";
             resultsDiv.appendChild(resultsPara);
         }
         // if computer wins add 1 to score and print result in results div
         else if (playRound(playerSelection, computerSelection) == "You lose!") {
             computerScore += 1;
             let resultsPara = document.createElement("p");
-            resultsPara.textContent = "You lose!";
+            resultsPara.textContent = "Computer wins!";
             resultsDiv.appendChild(resultsPara);
         }
         //if tie print in results div
@@ -92,14 +92,14 @@ function playGame() {
 
     //check if player score is higher than computer score, if so, declare player winner
     if (playerScore > computerScore) {
-        return "You win! Score: " + playerScore + " to " + computerScore;
+        return "Player wins! Score: " + playerScore + " to " + computerScore;
     }
     //check if computer score is higher than player score, if so, declare player loser
     else if (computerScore > playerScore) {
-        return "You lose! Score: " + playerScore + " to " + computerScore;
+        return "Player wins! Score: " + playerScore + " to " + computerScore;
     }
     //only other option is a tie
     else {
-        return "You tied! Score: " + playerScore + " to " + computerScore;
+        return "It's a tie! Score: " + playerScore + " to " + computerScore;
     }
 }
