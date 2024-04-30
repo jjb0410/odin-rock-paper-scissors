@@ -53,7 +53,7 @@ function playRound(playerSelection, computerSelection) {
     else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
     (playerSelection == 'paper' && computerSelection == 'scissors') ||
     (playerSelection == 'scissors' && computerSelection == 'rock')) {
-        return "Computers wins!";
+        return "Computer wins!";
     }
     //remaining choices should be a tie
     else {
