@@ -65,13 +65,14 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let playerScore = 0; //initialize scores at 0
     let computerScore = 0;
-    let totalScore=playerScore+computerScore;
+    let wins = 0;
     
-    while (totalScore<5) {
+    while (wins<5) {
         //playRound(playerSelection, computerSelection);
         // if player wins add 1 to score and print result in results div
         if (playRound(playerSelection, computerSelection) == "Player wins!") {
             playerScore += 1;
+            wins += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = "Player wins!";
             resultsDiv.appendChild(resultsPara);
@@ -79,6 +80,7 @@ function playGame() {
         // if computer wins add 1 to score and print result in results div
         else if (playRound(playerSelection, computerSelection) == "Computer wins!") {
             computerScore += 1;
+            wins += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = "Computer wins!";
             resultsDiv.appendChild(resultsPara);
@@ -97,7 +99,7 @@ function playGame() {
     }
     //check if computer score is higher than player score, if so, declare player loser
     else if (computerScore > playerScore) {
-        return "Player wins! Score: " + playerScore + " to " + computerScore;
+        return "Computer wins! Score: " + playerScore + " to " + computerScore;
     }
     //only other option is a tie
     else {
