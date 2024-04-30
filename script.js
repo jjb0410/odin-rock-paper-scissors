@@ -72,14 +72,15 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let playerScore = 0; //initialize scores at 0
     let computerScore = 0;
-    let wins = 0;
+    let playerWins = 0;
+    let computerWins = 0;
     
-    while (wins<5) {
+    while (playerWins<5 && computerWins<5) {
         //playRound(playerSelection, computerSelection);
         // if player wins add 1 to score and print result in results div
         if (playRound(playerSelection, computerSelection) == "Player wins!") {
             playerScore += 1;
-            wins += 1;
+            playerWins += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = "Player wins!";
             resultsDiv.appendChild(resultsPara);
@@ -87,7 +88,7 @@ function playGame() {
         // if computer wins add 1 to score and print result in results div
         else if (playRound(playerSelection, computerSelection) == "Computer wins!") {
             computerScore += 1;
-            wins += 1;
+            computerWins += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = "Computer wins!";
             resultsDiv.appendChild(resultsPara);
