@@ -82,7 +82,7 @@ function playGame() {
             playerScore += 1;
             playerWins += 1;
             let resultsPara = document.createElement("p");
-            resultsPara.textContent = "Player wins!";
+            resultsPara.textContent = playerSelection + " vs. " + computerSelection.toLowerCase() + ", player wins! Current score: " + playerScore + " to " + computerScore;
             resultsDiv.appendChild(resultsPara);
         }
         // if computer wins add 1 to score and print result in results div
@@ -90,13 +90,13 @@ function playGame() {
             computerScore += 1;
             computerWins += 1;
             let resultsPara = document.createElement("p");
-            resultsPara.textContent = "Computer wins!";
+            resultsPara.textContent = playerSelection + " vs. " + computerSelection.toLowerCase() + ", computer wins! Current score: " + playerScore + " to " + computerScore;
             resultsDiv.appendChild(resultsPara);
         }
         //if tie print in results div
         else {
             let resultsPara = document.createElement("p");
-            resultsPara.textContent = "It's a tie!";
+            resultsPara.textContent = playerSelection + " vs. " + computerSelection.toLowerCase() + ", it's a tie! Current score: " + playerScore + " to " + computerScore;
             resultsDiv.appendChild(resultsPara);
         }
     }
@@ -104,19 +104,19 @@ function playGame() {
     //check if player score is higher than computer score, if so, declare player winner
     if (playerScore > computerScore) {
         let finalResultsPara = document.createElement("p");
-        finalResultsPara.textContent = "Player wins the game! Score: " + playerScore + " to " + computerScore;
+        finalResultsPara.textContent = "Player wins the game! Final score: " + playerScore + " to " + computerScore;
         resultsDiv.appendChild(finalResultsPara);
     }
     //check if computer score is higher than player score, if so, declare player loser
     else if (computerScore > playerScore) {
         let finalResultsPara = document.createElement("p");
-        finalResultsPara.textContent = "Computer wins the game! Score: " + playerScore + " to " + computerScore;
+        finalResultsPara.textContent = "Computer wins the game! Final score: " + playerScore + " to " + computerScore;
         resultsDiv.appendChild(finalResultsPara);
     }
     //only other option is a tie but should never happen because game ends at 5 wins
     else {
         let finalResultsPara = document.createElement("p");
-        finalResultsPara.textContent = "It's a tie! Score: " + playerScore + " to " + computerScore;
+        finalResultsPara.textContent = "It's a tie! Final score: " + playerScore + " to " + computerScore;
         resultsDiv.appendChild(finalResultsPara);
     }
 }
