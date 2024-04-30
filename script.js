@@ -61,7 +61,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-//plays 5 games in total
+//plays 5 games in total until 5 wins
 function playGame() {
     let playerScore = 0; //initialize scores at 0
     let computerScore = 0;
@@ -95,14 +95,20 @@ function playGame() {
 
     //check if player score is higher than computer score, if so, declare player winner
     if (playerScore > computerScore) {
-        return "Player wins! Score: " + playerScore + " to " + computerScore;
+        let finalResultsPara = document.createElement("p");
+        finalResultsPara.textContent = "Player wins the game! Score: " + playerScore + " to " + computerScore;
+        resultsDiv.appendChild(finalResultsPara);
     }
     //check if computer score is higher than player score, if so, declare player loser
     else if (computerScore > playerScore) {
-        return "Computer wins! Score: " + playerScore + " to " + computerScore;
+        let finalResultsPara = document.createElement("p");
+        finalResultsPara.textContent = "Computer wins the game! Score: " + playerScore + " to " + computerScore;
+        resultsDiv.appendChild(finalResultsPara);
     }
-    //only other option is a tie
+    //only other option is a tie but should never happen because game ends at 5 wins
     else {
-        return "It's a tie! Score: " + playerScore + " to " + computerScore;
+        let finalResultsPara = document.createElement("p");
+        finalResultsPara.textContent = "It's a tie! Score: " + playerScore + " to " + computerScore;
+        resultsDiv.appendChild(finalResultsPara);
     }
 }
