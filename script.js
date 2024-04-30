@@ -53,7 +53,7 @@ function playRound(playerSelection, computerSelection) {
     else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
     (playerSelection == 'paper' && computerSelection == 'scissors') ||
     (playerSelection == 'scissors' && computerSelection == 'rock')) {
-        return "Player wins!";
+        return "Computers wins!";
     }
     //remaining choices should be a tie
     else {
@@ -65,18 +65,19 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
     let playerScore = 0; //initialize scores at 0
     let computerScore = 0;
+    let totalScore=playerScore+computerScore;
     
-    for (let i=0; i<5; i++) {
+    while (totalScore<5) {
         //playRound(playerSelection, computerSelection);
         // if player wins add 1 to score and print result in results div
-        if (playRound(playerSelection, computerSelection) == "You win!") {
+        if (playRound(playerSelection, computerSelection) == "Player wins!") {
             playerScore += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = "Player wins!";
             resultsDiv.appendChild(resultsPara);
         }
         // if computer wins add 1 to score and print result in results div
-        else if (playRound(playerSelection, computerSelection) == "You lose!") {
+        else if (playRound(playerSelection, computerSelection) == "Computer wins!") {
             computerScore += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = "Computer wins!";
