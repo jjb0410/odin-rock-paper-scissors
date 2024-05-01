@@ -1,6 +1,7 @@
 //ui functionality starts here
 let computerSelection = getComputerChoice(); //initialize choice for computer 
 let playerSelection; //= prompt('Rock, paper, or scissors?', 'Rock'); // take player choice
+let roundWinner; //store result of winner for each round
 
 let rockBtn = document.querySelector(".rock");
 let paperBtn = document.querySelector(".paper");
@@ -31,13 +32,13 @@ clearBtn.addEventListener("click", function() {
 function getComputerChoice() {
     let choice = (Math.random() * 3); //computer choice is 1/3 chance of rock paper or scissors
     if (choice >= 0 && choice < 1) {
-        return "Rock";
+        return "rock";
     }
     else if (choice >= 1 && choice < 2) {
-        return "Paper";
+        return "paper";
     }
     else {
-        return "Scissors";
+        return "scissors";
     }
 }
 
@@ -45,26 +46,31 @@ function randomizeChoice() {
     computerSelection = getComputerChoice(); //rolls a new random choice for computer
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
     randomizeChoice(); //gets a new random choice for the computer for each new round
-    computerSelection = computerSelection.toLowerCase(); //convert to lowercase to avoid case sensitivity issues
-    playerSelection = playerSelection.toLowerCase();
 
-    //check for winning choices
-    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-    (playerSelection == 'paper' && computerSelection == 'rock') ||
-    (playerSelection == 'scissors' && computerSelection == 'paper')) {
-        return "Player wins!";
-        }
+    if (playerSelection.toLowerCase() == 'rock' && computerSelection == 'scissors') {
+        roundWinner="player";
+    }
+    else if (playerSelection.toLowerCase() == 'paper' && computerSelection == 'rock') {
+        roundWinner="player";
+    }
+    else if (playerSelection.toLowerCase() == 'scissors' && computerSelection == 'paper') {
+        roundWinner="player";
+    }
     //check for losing choices
-    else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
-    (playerSelection == 'paper' && computerSelection == 'scissors') ||
-    (playerSelection == 'scissors' && computerSelection == 'rock')) {
-        return "Computer wins!";
+    else if (playerSelection.toLowerCase() == 'rock' && computerSelection == 'paper') {
+        roundWinner="computer";
+    }
+    else if (playerSelection.toLowerCase() == 'paper' && computerSelection == 'scissors') {
+        roundWinner="computer";
+    }
+    else if (playerSelection.toLowerCase() == 'scissors' && computerSelection == 'rock') {
+        roundWinner="computer";
     }
     //remaining choices should be a tie
     else {
-        return "It's a tie!";
+        roundWinner="tie";
     }
 }
 
@@ -76,25 +82,27 @@ function playGame() {
     let computerWins = 0;
     
     while (playerWins<5 && computerWins<5) {
-        //playRound(playerSelection, computerSelection);
+        playRound();
         // if player wins add 1 to score and print result in results div
-        if (playRound(playerSelection, computerSelection) == "Player wins!") {
+        if (roundWinner=="player") {
             playerScore += 1;
             playerWins += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = playerSelection + " vs. " + computerSelection.toLowerCase() + ", player wins! Current score: " + playerScore + " to " + computerScore;
             resultsDiv.appendChild(resultsPara);
+            continue;
         }
         // if computer wins add 1 to score and print result in results div
-        else if (playRound(playerSelection, computerSelection) == "Computer wins!") {
+        else if (roundWinner=="computer") {
             computerScore += 1;
             computerWins += 1;
             let resultsPara = document.createElement("p");
             resultsPara.textContent = playerSelection + " vs. " + computerSelection.toLowerCase() + ", computer wins! Current score: " + playerScore + " to " + computerScore;
             resultsDiv.appendChild(resultsPara);
+            continue;
         }
         //if tie print in results div
-        else {
+        else  {
             let resultsPara = document.createElement("p");
             resultsPara.textContent = playerSelection + " vs. " + computerSelection.toLowerCase() + ", it's a tie! Current score: " + playerScore + " to " + computerScore;
             resultsDiv.appendChild(resultsPara);
